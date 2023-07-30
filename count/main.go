@@ -2,8 +2,9 @@ package main
 
 import (
 	"fmt"
-	"github.com/headfirstgo/datafile"
 	"log"
+
+	"github.com/headfirstgo/HeadFirstGo/datafile"
 )
 
 func main() {
