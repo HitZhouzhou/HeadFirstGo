@@ -33,5 +33,35 @@ func main(){
 ```
 ![The result of the program][def]
 
-
 [def]: https://github.com/HitZhouzhou/HeadFirstGo/blob/main/chapter14_automated_test/test_prose/piture/result1.png
+Look at the result above it have a mistake,as it mean that parents are a redeo clown and a prize bull,that must be an error.
+### Let's fix it now
+```go
+func JoinWithCommas(phrases []string) string {
+	result := strings.Join(phrases[:len(phrases)-1], ",")
+	result += " ,and "
+	result += phrases[len(phrases)-1]
+	return result
+}
+```
+We simply add and "," at the last string but that cause another error.
+![result2](test_prose/piture/result1.png)
+### So how can we make sure that every time we fix our program it won't cause another error?
+
+#### Let's look at the test
+"join_test.go"
+```go
+func TestTwoElements(t *testing.T)  {
+	list := []string{"apple", "orange"}
+	if JoinWithCommas(list) != "apple and orange" {
+		t.Error("did't match expected value")
+	}
+}
+```
+> - The join part of the filename is not important ,but the _test.go part is;the go test tool looks for files named with that suffix.
+> - Function name should begin with "Test"
+> - Function should be passed a pointer to a testing.T value.
+
+#### Running tests with the "go test"command
+![go-test](https://github.com/HitZhouzhou/HeadFirstGo/blob/main/chapter14_automated_test/test_prose/piture/go_test.png)
+We can run the tests in this way.
